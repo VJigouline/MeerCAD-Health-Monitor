@@ -1,7 +1,7 @@
-MeerCAD-Blood-Pressure
+MeerCAD-Health-Monitor
 ======================
 
-Blood pressure monitoring project dedicated to tracking of blood pressure, pulse and weight for health purposes.
+Health monitoring project dedicated to tracking of blood pressure, pulse, weight, medication etc. for health purposes.
 
 It will consist of 2 parts:
 - web based application with __MySQL__ database to store user's data
