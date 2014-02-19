@@ -2,10 +2,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/formatting.css" />
+<link rel="stylesheet" href="css/database.css" />
 </head>
 <body>
-<h1>MeerCAD Health monitor datbase diagram</h1>
-<h2>#__mbpm_main - Blood pressure data</h2>
+<h1>MeerCAD Health monitor database diagram</h1>
+<h2>#__mhm_blood_pressure - Blood pressure data</h2>
 <table>
 <thead>
 <tr>
@@ -23,32 +24,32 @@
 <tbody>
 <tr>
 <td>id</td>
+<td>int(11)</td>
 <td></td>
+<td>UNSIGNED</td>
+<td>No</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>auto_increment</td>
+<td>primary</td>
+<td>Record ID</td>
 </tr>
 <tr>
 <td>user_id</td>
+<td>int(11)</td>
+<td></td>
+<td>UNSIGNED</td>
+<td>No</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Indexed</td>
+<td>to relate to #__users</td>
 </tr>
 <tr>
 <td>systolic</td>
+<td>float</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>No</td>
 <td></td>
 <td></td>
 <td></td>
@@ -56,10 +57,10 @@
 </tr>
 <tr>
 <td>diastolic</td>
+<td>float</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
+<td>No</td>
 <td></td>
 <td></td>
 <td></td>
@@ -67,10 +68,10 @@
 </tr>
 <tr>
 <td>pulse</td>
+<td>smallint(5)</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>UNSIGNED</td>
+<td>No</td>
 <td></td>
 <td></td>
 <td></td>
@@ -78,109 +79,54 @@
 </tr>
 <tr>
 <td>datetime</td>
+<td>datetime</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>No</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td>position</td>
+<td>tinyint(3)</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>UNSIGNED</td>
+<td>Yes</td>
+<td>NULL</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td>location</td>
+<td>tinyint(3)</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>UNSIGNED</td>
+<td>Yes</td>
+<td>NULL</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td>notes</td>
+<td>varchar(4096)</td>
+<td>utf8_unicode_ci</td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>Yes</td>
+<td>NULL</td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
+<td>updated</td>
+<td>datetime</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td>No</td>
 <td></td>
 <td></td>
 <td></td>
@@ -189,4 +135,19 @@
 </tbody>
 </table>
 </body>
+
+<pre>CREATE TABLE  `#__mhm_blood_pressure` (
+ `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+ `user_id` INT( 11 ) UNSIGNED NOT NULL ,
+ `systolic` FLOAT( 5 ) NOT NULL ,
+ `diastolic` FLOAT( 5 ) NOT NULL ,
+ `pulse` SMALLINT( 5 ) UNSIGNED NOT NULL ,
+ `datetime` DATETIME NOT NULL ,
+ `position` TINYINT UNSIGNED,
+ `location` TINYINT UNSIGNED,
+ `notes` VARCHAR( 4096 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+ `updated` DATETIME NOT NULL ,
+PRIMARY KEY (  `id` ) ,
+INDEX (  `user_id` )
+) TYPE = MYISAM CHARACTER SET utf8 COLLATE utf8_unicode_ci;</pre>
 </html>
